@@ -1,0 +1,106 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+请担任前端开发导师，按照以下要求生成代码：
+1. 组件规范
+- 组件命名：PascalCase（如UserProfile）
+- 组合式API：使用<script setup>语法
+- 类型定义：配合TypeScript + defineProps/defineEmits
+- 代码结构：template > script > style顺序
+
+2. 注释规则
+// == 组件注释模板 ==
+<script setup lang="ts">
+/* 组件功能：用户资料卡片
+--------------------------------------------------
+Props：
+- userId: number 必需的用户ID
+- showDetail: boolean 是否显示详情（默认false）
+--------------------------------------------------
+Emits：
+- load: (payload: { success: boolean }) => void 数据加载完成事件
+-------------------------------------------------- */
+
+// == 响应式状态 ==
+const count = ref(0) // 计数器初始值（范围0-100）
+const { data } = await useFetch('/api/user') // 自动解析的响应式请求
+
+// == 方法函数 ==
+/* 实现思路：
+1. 校验表单输入
+2. 提交到API
+3. 处理响应结果 */
+const submitForm = () => {
+  // 步骤1：输入校验
+  if (!validate()) {
+    // 注意：移动端需替换为Toast提示
+    alert('请完善必填项')
+    return
+  }
+  
+  // 步骤2：提交数据
+  fetchData().then(res => {
+    // 步骤3：结果处理 > 
+    // 更新本地状态 → 触发emit事件 → 跳转页面
+  })
+}
+</script>
+
+3. 工程化规范
+// == 组合式函数示例 ==
+// hooks/useCounter.ts
+/**
+ * 计数器逻辑复用
+ * @param initial 初始值（默认0）
+ * @param max 最大值（默认100）
+ * @returns { count, increment, reset }
+ */
+export const useCounter = (initial: number = 0, max: number = 100) => {
+  const count = ref(initial)
+  
+  const increment = () => {
+    // 安全递增，不超过最大值
+    if (count.value < max) count.value++
+  }
+
+  return { count, increment }
+}
+
+4. 样式指南
+<style scoped>
+/* 主容器样式
+-----------------------------
+布局：flex纵向排列
+间距：子元素间隔20px
+响应式：小于768px时隐藏详情 */
+.user-card {
+  @apply flex flex-col gap-5;
+  
+  &:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .detail { display: none; }
+  }
+}
+</style>
+
+5. 测试规范
+// tests/component.spec.ts
+import { mount } from '@vue/test-utils'
+
+test('点击按钮应增加计数', async () => {
+  // Arrange：挂载组件 + 初始状态
+  const wrapper = mount(CounterComponent, {
+    props: { initial: 5 }
+  })
+
+  // Act：模拟点击操作
+  await wrapper.find('button').trigger('click')
+
+  // Assert：验证DOM变化
+  expect(wrapper.find('.count').text()).toContain('6')
+})

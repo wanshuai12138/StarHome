@@ -1,0 +1,219 @@
+/* 中国山水画背景动画定义
+--------------------------------------------------
+提供共享动画效果定义以避免重复
+-------------------------------------------------- */
+
+/* 云雾飘动动画 */
+@keyframes mistFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(0%);
+  }
+  25%, 75% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(30%);
+  }
+}
+
+/* 水流水平循环移动 */
+@keyframes waterFlow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 波纹从中心向外扩散渐隐 */
+@keyframes rippleEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    border-width: 1px;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+    border-width: 0.1px;
+  }
+}
+
+/* 雨滴下落动画 */
+@keyframes rainFall {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) translateX(15px);
+    opacity: 0;
+  }
+}
+
+/* 物体旋转动画 */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 各种摇摆动画 */
+/* 柳条左右摇摆 */
+@keyframes sway {
+  0%, 100% { transform: rotate(calc(var(--angle) - var(--sway-amount) * 0.5)); }
+  50% { transform: rotate(calc(var(--angle) + var(--sway-amount))); }
+}
+
+/* 树干轻微摇摆 */
+@keyframes trunkSway {
+  0%, 100% { transform: translateX(-50%) rotate(-1deg); }
+  50% { transform: translateX(-50%) rotate(2deg); }
+}
+
+/* 柳叶水平伸展摇摆 */
+@keyframes willowLeafSway {
+  0% { transform: scaleX(20) skewX(-2deg); }
+  50% { transform: scaleX(22) skewX(3deg); }
+  100% { transform: scaleX(20) skewX(-2deg); }
+}
+
+/* 落叶左右摇摆 */
+@keyframes leafSway {
+  0%, 100% { margin-left: 0; }
+  60% { margin-left: 25px; }
+}
+
+/* 叶子从上到下飘落轨迹 */
+@keyframes fallDown {
+  0% {
+    transform: translateY(-50px) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateY(30vh) translateX(100px);
+  }
+  60% {
+    transform: translateY(50vh) translateX(200px);
+  }
+  80% {
+    transform: translateY(75vh) translateX(280px);
+  }
+  100% {
+    transform: translateY(105vh) translateX(350px);
+    opacity: 0;
+  }
+}
+
+/* 飞鸟从左到右飞行轨迹 */
+@keyframes birdFly {
+  0% {
+    left: -5%;
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(15px);
+  }
+  100% {
+    left: 110%;
+    transform: translateY(0);
+  }
+}
+
+/* 鸟翅膀上下扇动 */
+@keyframes wingFlap {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.7);
+  }
+}
+
+/* 梅花小幅度摆动 */
+@keyframes flowerSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}
+
+/* 竹竿轻微摇摆 */
+@keyframes bambooSway {
+  0%, 100% {
+    transform: rotate(var(--rotation));
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) + 2deg));
+  }
+}
+
+/* 竹叶摆动 */
+@keyframes bambooLeafSway {
+  0%, 100% {
+    transform: rotate(var(--leaf-angle));
+  }
+  50% {
+    transform: rotate(calc(var(--leaf-angle) + 10deg));
+  }
+}
+
+/* 小船漂浮动画 */
+@keyframes boatFloat {
+  0%, 100% {
+    transform: translateY(0) scale(0.8);
+  }
+  50% {
+    transform: translateY(-8px) scale(0.8);
+  }
+}
+
+/* 仙鹤飞行动画 */
+@keyframes craneFly {
+  0% {
+    right: -10%;
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+  100% {
+    right: 110%;
+    transform: translateY(0);
+  }
+}
+
+/* 翅膀扇动动画 */
+@keyframes wingsFlap {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.7);
+  }
+} 
